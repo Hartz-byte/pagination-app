@@ -5,6 +5,7 @@ import "react-responsive-pagination/themes/classic.css";
 
 import UsersTable from "./UsersTable";
 
+// interface
 interface User {
   ID: Number;
   JobTitle: String;
@@ -16,6 +17,7 @@ interface User {
 }
 
 const UserList: React.FC = () => {
+  // useState hooks
   const [users, setUsers] = useState<User[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -49,6 +51,7 @@ const UserList: React.FC = () => {
   return (
     <div>
       {isLoading ? (
+        // loading handling
         <div
           style={{
             display: "flex",
@@ -61,6 +64,7 @@ const UserList: React.FC = () => {
           </p>
         </div>
       ) : error ? (
+        // error handling
         <div
           style={{
             display: "flex",
@@ -73,9 +77,12 @@ const UserList: React.FC = () => {
           </p>
         </div>
       ) : (
+        // api response render
         <>
+          {/* UserTable component with props users */}
           <UsersTable users={users} />
 
+          {/* pagination */}
           <ResponsivePagination
             current={currentPage}
             total={pageSize}

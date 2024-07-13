@@ -1,5 +1,6 @@
 import React from "react";
 
+// interface
 interface User {
   ID: Number;
   JobTitle: String;
@@ -21,27 +22,32 @@ const UsersTable: React.FC<UsersTableProps> = ({ users }) => {
 
   return (
     <div>
+      {/* users table */}
       <table style={{ width: "100%", borderCollapse: "collapse" }}>
         <thead>
           <tr
             style={{
-              backgroundColor: "#f2f2f2",
+              backgroundColor: "#e0e0e0",
               textAlign: "center",
               fontSize: "14px",
               fontWeight: "bold",
             }}
           >
-            <th>JobTitle</th>
-            <th>EmailAddress</th>
-            <th>FirstNameLastName</th>
+            <th>Job Title</th>
+            <th>Email Address</th>
+            <th>Full Name</th>
             <th>Email</th>
             <th>Phone</th>
             <th>Company</th>
           </tr>
         </thead>
         <tbody>
+          {/* mapping and rendering each element */}
           {users.map((user, index) => (
-            <tr key={`${user.ID}-${index}`}>
+            <tr
+              key={`${user.ID}-${index}`}
+              style={{ backgroundColor: index % 2 == 1 ? "#f7f7f7" : "#fff" }}
+            >
               <td
                 style={{
                   padding: "10px",
